@@ -1,0 +1,53 @@
+name: kuch bhi
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the code from the repository
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # # Set up Python environment
+    # - name: Set up Python
+    #   uses: actions/setup-python@v2
+    #   with:
+    #     python-version: '3.8'
+
+    # # Install dependencies (if any)
+    # - name: Install dependencies
+    #   run: |
+    #     pip install -r requirements.txt
+
+    # Run the script to generate the artifact
+    - name: Generate artifact
+      run: |
+        # Example: Create a simple text file artifact
+        echo "This is a sample artifact" > artifact.txt
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: sample-artifact
+        path: artifact.txt
+
+  # # Optionally, you can create another job to download the artifact if needed
+  # download:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2
+
+  #     - name: Download artifact using v4 action
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: sample-artifact
+
+        
