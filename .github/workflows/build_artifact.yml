@@ -33,7 +33,7 @@ jobs:
 
     # Upload the artifact using the new v3 action
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: sample-artifact
         path: artifact.txt
