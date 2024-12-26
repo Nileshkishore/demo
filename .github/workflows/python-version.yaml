@@ -1,0 +1,28 @@
+name: Python Version Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-python-version:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository (required for any workflow)
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Python 3.9
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    # Step 3: Verify the Python version
+    - name: Check Python version
+      run: python --version
